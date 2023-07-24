@@ -8,6 +8,7 @@ import { Suspense, lazy, useEffect } from 'react';
 import { useAuth } from 'hooks';
 import { refreshUser } from 'redux/auth/operations';
 
+const HomePage = lazy(() => import('../pages/Home'))
 const RegisterPage = lazy(() => import('../pages/Register'));
 const LoginPage = lazy(() => import('../pages/Login'));
 
@@ -34,29 +35,28 @@ export const App = () => {
     >
         <Router>
           <Suspense fallback={<div>Loading...</div>}>
-
-          <Routes>
-            <Route
-            path="*"
-            element={
-              <RestrictedRoute redirectTo="/contacts" component={<RegisterPage />} />
-            }
-            />
-            <Route
-            path="/login"
-            element={
-              <RestrictedRoute redirectTo="/contacts" component={<LoginPage />} />
-            }
-            />
-          <Route
-            path="/contacts"
-            element={
-              <PrivateRoute redirectTo="/login" component={
-                <Phonebook />} />
-              }
+            <Routes>
+              <Route
+                path="*"
+                element={
+                  <RestrictedRoute redirectTo="/contacts" component={<RegisterPage />} />
+                }
               />
-          </Routes>
-              </Suspense>
+              <Route
+                path="/login"
+                element={
+                  <RestrictedRoute redirectTo="/contacts" component={<LoginPage />} />
+                }
+              />
+              <Route
+                path="/contacts"
+                element={
+                  <PrivateRoute redirectTo="/login" component={
+                    <HomePage />} />
+                  }
+              />
+            </Routes>
+          </Suspense>
         </Router>
     </div>
   );
