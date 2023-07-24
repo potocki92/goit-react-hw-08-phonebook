@@ -24,12 +24,12 @@ const InputsForm = ({ buttonText, formType }) => {
   return (
     <Form onSubmit={handleSubmit}>
       {formType === 'register' && (
-        <Label for="name">
+        <Label htmlFor="name">
           Username:
           <input type="text" name="name" />
         </Label>
       )}
-      <Label for="email">
+      <Label htmlFor="email">
         Email:
         <input type="email" name="email" />
       </Label>
