@@ -1,6 +1,4 @@
-import { Provider, useDispatch } from 'react-redux/es';
-import store from "../redux/store"
-import Phonebook from './Phonebook/Phonebook';
+import {  useDispatch } from 'react-redux/es';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { RestrictedRoute } from './RestrictedRoute';
 import { PrivateRoute } from './PrivateRoute';

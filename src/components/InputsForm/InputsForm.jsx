@@ -4,7 +4,7 @@ import { logIn, register } from 'redux/auth/operations';
 import { Form, Label, TextWrapper } from './InputsForm.styled';
 import { FormsLink } from 'components/LoginForm/LoginForm.styled';
 
-const InputsForm = ({ onSubmit, buttonText, formType }) => {
+const InputsForm = ({ buttonText, formType }) => {
   const dispatch = useDispatch();
 
   const handleSubmit = e => {
@@ -12,7 +12,6 @@ const InputsForm = ({ onSubmit, buttonText, formType }) => {
     const form = e.currentTarget;
     const { email, password, name } = form.elements;
 
-    // W zależności od formType (login lub register), odpowiednio wywołujemy akcję
     if (formType === 'login') {
       dispatch(logIn({ email: email.value, password: password.value }));
     } else if (formType === 'register') {
@@ -25,12 +24,12 @@ const InputsForm = ({ onSubmit, buttonText, formType }) => {
   return (
     <Form onSubmit={handleSubmit}>
       {formType === 'register' && (
-        <Label>
+        <Label for="name">
           Username:
           <input type="text" name="name" />
         </Label>
       )}
-      <Label>
+      <Label for="email">
         Email:
         <input type="email" name="email" />
       </Label>
