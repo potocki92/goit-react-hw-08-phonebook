@@ -1,6 +1,5 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { Link } from 'react-router-dom';
 import { logIn, register } from 'redux/auth/operations';
 import { Form, Label, TextWrapper } from './InputsForm.styled';
 import { FormsLink } from 'components/LoginForm/LoginForm.styled';
